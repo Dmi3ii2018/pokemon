@@ -9,7 +9,6 @@ interface IPokemonCard {
   name: string;
   attack: number;
   deffense: number;
-  type: string[];
   imgSrc: string;
 }
 
@@ -18,37 +17,28 @@ const PokemonCard: React.FC<IPokemonCard> = ({
   name,
   attack,
   deffense,
-  type,
   imgSrc,
-}) => {
-
-  return (
-    <div className={s.root}>
-      <div className={s.infoWrap}>
-        <Heading tag={TitleSize.xl} className={s.titleName}>
-          {name}
-        </Heading>
-        <div className={s.statWrap}>
-          <div className={s.statItem}>
-            <div className={s.statValue}>{attack}</div>
-            Attack
-          </div>
-          <div className={s.statItem}>
-            <div className={s.statValue}>{deffense}</div>
-            Defense
-          </div>
+}) => (
+  <div className={s.root}>
+    <div className={s.infoWrap}>
+      <Heading tag={TitleSize.xl} className={s.titleName}>
+        {name}
+      </Heading>
+      <div className={s.statWrap}>
+        <div className={s.statItem}>
+          <div className={s.statValue}>{attack}</div>
+          Attack
         </div>
-        <div className={s.labelWrap}>
-          {type.map((nature) => {
-            return <span key={nature + id} className={cn(s.label, s[nature as keyof typeof s])}>{nature}</span>;
-          })}
+        <div className={s.statItem}>
+          <div className={s.statValue}>{deffense}</div>
+          Defense
         </div>
-      </div>
-      <div className={s.pictureWrap}>
-        <img src={imgSrc} alt={name} />
       </div>
     </div>
-  );
-};
+    <div className={s.pictureWrap}>
+      <img src={imgSrc} alt={name} />
+    </div>
+  </div>
+);
 
 export default PokemonCard;

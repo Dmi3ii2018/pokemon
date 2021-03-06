@@ -3,10 +3,8 @@ import cn from 'classnames';
 
 import Layout from '../../components/Layout';
 import Heading, { TitleSize } from '../../components/Heading';
-import Input from '../../components/Form/Input';
 import PokemonCard from '../../components/PokemonCard';
-import FormGroup from '../../components/Form';
-
+import Input from "../../components/Form/Input";
 import { IPokemons, IData, IQuery } from '../../interface/pokemons';
 
 import h from './Pokedex.module.scss';
@@ -21,7 +19,7 @@ const PokedexPage: React.FC = () => {
   const debaunceValue = useDebounce(searchValue, 1000);
 
   const { data, isLoading, error } = useData<IData>('getPokemons', query, [searchValue, type]);
-
+console.log(data);
   useEffect(() => {
     setQuery((state) => ({
       ...state,
@@ -32,17 +30,6 @@ const PokedexPage: React.FC = () => {
   const handleSearchChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(evt.target.value);
   }, []);
-
-  const handleSelectChange = useCallback(
-    (type: string) => (evt: React.ChangeEvent<HTMLInputElement>) => {
-      setType(evt.target.value);
-      setQuery((state) => ({
-        ...state,
-        [type]: evt.target.value,
-      }));
-    },
-    [],
-  );
 
   if (error) {
     return <div>Smth went wrong </div>;
@@ -63,7 +50,6 @@ const PokedexPage: React.FC = () => {
                   id={pokemon.id}
                   key={pokemon.id}
                   imgSrc={pokemon.img}
-                  type={pokemon.types}
                   name={pokemon.name}
                   attack={pokemon.stats.attack}
                   deffense={pokemon.stats.defense}
