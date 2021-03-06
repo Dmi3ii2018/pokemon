@@ -13,12 +13,11 @@ import useDebounce from '../../hook/useDebounce';
 
 const PokedexPage: React.FC = () => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const [type, setType] = useState<string>('');
   const [query, setQuery] = useState<IQuery>({});
 
   const debaunceValue = useDebounce(searchValue, 1000);
 
-  const { data, isLoading, error } = useData<IData>('getPokemons', query, [searchValue, type]);
+  const { data, isLoading, error } = useData<IData>('getPokemons', query, [searchValue]);
 console.log(data);
   useEffect(() => {
     setQuery((state) => ({
@@ -51,6 +50,8 @@ console.log(data);
                   key={pokemon.id}
                   imgSrc={pokemon.img}
                   name={pokemon.name}
+                  abilities={pokemon.abilities}
+                  type={pokemon.types}
                   attack={pokemon.stats.attack}
                   deffense={pokemon.stats.defense}
                 />

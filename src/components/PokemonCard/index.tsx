@@ -1,40 +1,19 @@
-import React from "react";
-import cn from "classnames";
-import Heading, { TitleSize } from "../Heading";
+import React from 'react';
 
-import s from "./PokemonCard.module.scss";
+import s from './PokemonCard.module.scss';
 
 interface IPokemonCard {
   id: number;
   name: string;
   attack: number;
   deffense: number;
+  type: string[];
+  abilities: string[];
   imgSrc: string;
 }
 
-const PokemonCard: React.FC<IPokemonCard> = ({
-  id,
-  name,
-  attack,
-  deffense,
-  imgSrc,
-}) => (
-  <div className={s.root}>
-    <div className={s.infoWrap}>
-      <Heading tag={TitleSize.xl} className={s.titleName}>
-        {name}
-      </Heading>
-      <div className={s.statWrap}>
-        <div className={s.statItem}>
-          <div className={s.statValue}>{attack}</div>
-          Attack
-        </div>
-        <div className={s.statItem}>
-          <div className={s.statValue}>{deffense}</div>
-          Defense
-        </div>
-      </div>
-    </div>
+const PokemonCard: React.FC<IPokemonCard> = ({ id, name, attack, deffense, type, imgSrc, abilities }) => (
+  <div className={s.root}  data-name={name}>
     <div className={s.pictureWrap}>
       <img src={imgSrc} alt={name} />
     </div>
