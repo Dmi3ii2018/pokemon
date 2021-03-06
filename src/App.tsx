@@ -1,10 +1,11 @@
 import React from 'react';
 import cn from "classnames";
 import s from "./App.module.scss";
+import Pokedex from "./pages/Pokedex";
 
 const App = () => (
-    <div className={cn(s.header)}>
-        This is App component
+    <div>
+        <Pokedex />
     </div>
 )
 

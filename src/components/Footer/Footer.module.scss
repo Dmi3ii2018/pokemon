@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  height: 93px;
+  height: inherit;
+  min-height: 93px;
+  align-items: center;
+}
+
+.footer__emoji {
+    color: blue;
+    font-size: 30px;
+}
