@@ -1,9 +1,12 @@
 import config from "../config";
+// type serv = as keyof type config;
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["query"] }] */
-function getUrlWithParamsConfig(endpointConfig: string, query: any) {
+function getUrlWithParamsConfig(serverType: string, endpointConfig: string, query: any) {
   const endpointConf = endpointConfig as keyof typeof config.client.endpoint;
+  const servType = serverType as keyof typeof config.client.server
+  
   const url = {
-    ...config.client.server,
+    ...config.client.server[servType],
     ...config.client.endpoint[endpointConf].url,
     query: {}
   }

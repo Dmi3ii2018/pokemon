@@ -1,14 +1,20 @@
 const config = {
   client: {
     server: {
-      protocol: 'http',
-      host: 'zar.hosthot.ru',
+      pokemons: {
+        protocol: 'http',
+        host: 'zar.hosthot.ru',
+      },
+      pokemonsAbilities: {
+        protocol: 'https',
+        host: 'pokeapi.co'
+      }
     },
     endpoint: {
       getPokemons: {
         method: 'GET',
         url: {
-          pathname: '/api/v1/pokemons'
+          pathname: '/api/v1/pokemons',
         },
         params: [],
       },
@@ -17,10 +23,17 @@ const config = {
         url: {
           pathname: '/api/v1/pokemon/{id}',
         },
-        params: ["id"],
+        params: ['id'],
+      },
+      getAbilities: {
+        method: 'GET',
+        url: {
+          pathname: 'api/v2/ability/{name}'
+        },
+        params: ['name'],
       }
-    }
-  }
-}
+    },
+  },
+};
 
 export default config;

@@ -20,7 +20,7 @@ interface IPokemon {
 }
 
 const Pokemon: React.FC = () => {
-  const { data, isLoading, error } = useData<IPokemon>('getPokemon', { id: 10 }, []);
+  const { data, isLoading, error } = useData<IPokemon>('pokemons', 'getPokemon', { id: 10 }, []);
   console.log('pokemon', data);
   if (isLoading) {
     return <p>Loading...</p>;
@@ -36,7 +36,7 @@ const Pokemon: React.FC = () => {
         <div className={s.root}>
           <div className={s.card}>
             <div className={s.imageContainer}>
-              <div className={s.image}>
+              <div>
                 <img width="255" height="261" src={data.img} alt={data.name} />
               </div>
               <div className={s.types}>
@@ -54,7 +54,7 @@ const Pokemon: React.FC = () => {
               <div className={s.abilities}>
                 <h2>Abilities</h2>
                 {data.abilities.map((ability) => (
-                  <div className={s.ability}>{ability}</div>
+                  <div key={ability + data.id} className={s.ability}>{ability}</div>
                 ))}
               </div>
               <div className={s.statsContainer}>

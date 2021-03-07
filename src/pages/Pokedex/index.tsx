@@ -17,8 +17,8 @@ const PokedexPage: React.FC = () => {
 
   const debaunceValue = useDebounce(searchValue, 1000);
 
-  const { data, isLoading, error } = useData<IData>('getPokemons', query, [searchValue]);
-console.log(data);
+  const { data, isLoading, error } = useData<IData>('pokemons', 'getPokemons', query, [searchValue]);
+
   useEffect(() => {
     setQuery((state) => ({
       ...state,
