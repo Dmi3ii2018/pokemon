@@ -2,8 +2,11 @@ import React, { useMemo, useCallback, useEffect } from 'react';
 import usePagination from '../../hook/usePagination';
 import './Pagination.css';
 
+const LIMIT = 20;
+
 interface IPagination {
   total: number;
+  searchValue: string,
   onPageChange: (num: number) => void;
 }
 
@@ -19,8 +22,8 @@ const Dots = () => (
   </li>
 );
 
-const Pagination: React.FC<IPagination> = ({ total, onPageChange }) => {
-  const pagLength = useMemo(() => Math.floor(total / 20 - 1), [total]);
+const Pagination: React.FC<IPagination> = ({ total, onPageChange, searchValue }) => {
+  const pagLength = useMemo(() => Math.floor(total / LIMIT), [total]);
   const [curPage, setCurrentPage, paginationIndexes] = usePagination(pagLength);
 
   const onNextClick = () => {
@@ -43,13 +46,19 @@ const Pagination: React.FC<IPagination> = ({ total, onPageChange }) => {
   );
 
   useEffect(() => {
-    // onPageChange(curPage);
+      setCurrentPage(1);
+  }, [searchValue])
+
+  useEffect(() => {
+    onPageChange(curPage);
   }, [curPage, onPageChange]);
 
   const renderPagination = useCallback(
     () => {
+      let arr;
       if (paginationIndexes) {
-        paginationIndexes.map((page: number, i: number) => {
+        console.log("paginationIndexes", paginationIndexes);
+        arr = paginationIndexes.map((page: number, i: number) => {
           if (!page) {
             return <Dots key={`${page}`} />;
           }
@@ -63,6 +72,7 @@ const Pagination: React.FC<IPagination> = ({ total, onPageChange }) => {
           );
         })
       }
+      return arr
     },
     [curPage, onPageNumberClick, paginationIndexes],
   );
@@ -86,4 +96,4 @@ const Pagination: React.FC<IPagination> = ({ total, onPageChange }) => {
   );
 };
 
-export default Pagination;
+export default React.memo(Pagination);

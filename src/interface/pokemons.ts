@@ -34,3 +34,8 @@ export interface IQuery {
   name?: string,
   type?: string,
 }
+
+export interface IOffset {
+  offset?: number | null,
+  limit: number
+}

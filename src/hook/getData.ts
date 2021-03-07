@@ -9,7 +9,6 @@ function useData<T>(serverType: string, endpoint: string, query: object, deps: a
   useEffect(() => {
     const getData = async (): Promise<void> => {
       setIsLoading(true);
-      
       try {
         const result = await req<T>(serverType, endpoint, query);
         setData(result);

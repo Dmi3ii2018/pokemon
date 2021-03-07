@@ -11,7 +11,7 @@ const usePagination = (pagLength: number) => {
     if (pagLength <= PAGES_NUMBER_TO_CHANGE_VIEW) {
       paginationIndexes = new Array(pagLength <= 0 ? 1 : pagLength)
         .fill("")
-        .map((it) => it + 1);
+        .map((it, i) => i + 1);
     }
     if (
       curPage < PAGES_NUMBER_TO_CHANGE_VIEW &&
