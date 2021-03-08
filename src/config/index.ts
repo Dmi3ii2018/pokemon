@@ -36,4 +36,15 @@ const config = {
   },
 };
 
+export enum ConfigServerType {
+  pokemons = "pokemons",
+  pokemonsAbilities = "pokemonsAbilities",
+}
+
+export enum ConfigEndpoint {
+  getPokemons = "getPokemons",
+  getPokemon = "getPokemon",
+  getAbilities = "getAbilities"
+}
+
 export default config;

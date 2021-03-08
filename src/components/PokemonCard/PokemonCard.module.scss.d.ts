@@ -2,19 +2,31 @@
 // Please do not change this file!
 interface CssExports {
   'bug': string;
+  'dark': string;
+  'dragon': string;
+  'electric': string;
+  'fairy': string;
+  'fighting': string;
   'fire': string;
   'flying': string;
+  'ghost': string;
   'grass': string;
+  'ground': string;
+  'ice': string;
   'infoWrap': string;
   'label': string;
   'labelWrap': string;
+  'normal': string;
   'pictureWrap': string;
   'poison': string;
+  'psychic': string;
+  'rock': string;
   'root': string;
   'slidein': string;
   'statItem': string;
   'statValue': string;
   'statWrap': string;
+  'steel': string;
   'titleName': string;
   'water': string;
 }

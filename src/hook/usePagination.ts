@@ -3,8 +3,10 @@ import { useState, useMemo } from "react";
 const PAGES_NUMBER_TO_CHANGE_VIEW = 4;
 const PAGES_NUMBER_WITH_DOTS = 7;
 
+type func = (num: number) => void;
+
 const usePagination = (pagLength: number) => {
-  const [curPage, setCurrentPage] = useState<number>(1);
+  const [curPage, setCurrentPage] = useState<any>(1);
 
   const paginationIndexList = useMemo(() => {
     let paginationIndexes;
@@ -44,7 +46,7 @@ const usePagination = (pagLength: number) => {
     return paginationIndexes;
   }, [curPage, pagLength]);
 
-  return [curPage, setCurrentPage, paginationIndexList];
+  return [curPage, setCurrentPage as func, paginationIndexList];
 };
 
 export default usePagination

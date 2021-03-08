@@ -30,6 +30,8 @@ export interface IData {
   total: number;
 }
 
+export type ITypeRequest = string[];
+
 export interface IQuery {
   name?: string,
   type?: string,

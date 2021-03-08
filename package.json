@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@types/history": "^4.7.8",
+    "@types/react-redux": "^7.1.16",
     "@types/why-did-you-update": "^0.0.11",
     "bootstrap": "^4.5.3",
     "classnames": "^2.2.6",
@@ -20,7 +21,11 @@
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "url": "^0.11.0",
+    "uuidv4": "^6.2.6",
     "why-did-you-update": "^1.0.8"
   },
   "devDependencies": {

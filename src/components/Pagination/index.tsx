@@ -1,4 +1,5 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
+import { uuid } from 'uuidv4';
 import usePagination from '../../hook/usePagination';
 import './Pagination.css';
 
@@ -10,9 +11,15 @@ interface IPagination {
   onPageChange: (num: number) => void;
 }
 
-const PaginationItem = ({ onPageClick, number, isActive }) => (
+interface IPaginationItem {
+  onPageClick: (evt: React.MouseEvent) => void,
+  number: number,
+  isActive: boolean
+}
+
+const PaginationItem: React.FC<IPaginationItem> = ({ onPageClick, number, isActive }) => (
   <li onClick={onPageClick}>
-    <button className={isActive ? 'active' : ''}>{number}</button>
+    <button type="button" className={isActive ? 'active' : ''}>{number}</button>
   </li>
 );
 
@@ -26,7 +33,7 @@ const Pagination: React.FC<IPagination> = ({ total, onPageChange, searchValue })
   const pagLength = useMemo(() => Math.floor(total / LIMIT), [total]);
   const [curPage, setCurrentPage, paginationIndexes] = usePagination(pagLength);
 
-  const onNextClick = () => {
+  const onNextClick = (): void => {
     if (pagLength !== curPage) {
       setCurrentPage(curPage + 1);
     }
@@ -47,7 +54,7 @@ const Pagination: React.FC<IPagination> = ({ total, onPageChange, searchValue })
 
   useEffect(() => {
       setCurrentPage(1);
-  }, [searchValue])
+  }, [searchValue, setCurrentPage])
 
   useEffect(() => {
     onPageChange(curPage);
@@ -57,14 +64,13 @@ const Pagination: React.FC<IPagination> = ({ total, onPageChange, searchValue })
     () => {
       let arr;
       if (paginationIndexes) {
-        console.log("paginationIndexes", paginationIndexes);
         arr = paginationIndexes.map((page: number, i: number) => {
           if (!page) {
-            return <Dots key={`${page}`} />;
+            return <Dots key={uuid()} />;
           }
           return (
             <PaginationItem
-              key={`${page}`}
+              key={uuid()}
               onPageClick={onPageNumberClick}
               number={page}
               isActive={page === curPage}

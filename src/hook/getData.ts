@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import req from "../utils/request";
 
-
 function useData<T>(serverType: string, endpoint: string, query: object, deps: any[] = []) {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
