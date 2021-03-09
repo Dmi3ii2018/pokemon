@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 
 interface IForm {
@@ -13,8 +13,7 @@ const Input: React.FC<IForm> = (prop) => {
   return (
     <Form>
       <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Search by name</Form.Label>
-        <Form.Control value={searchValue} onChange={queryHandler} type="text" />
+        <Form.Control placeholder="Search by name" value={searchValue} onChange={queryHandler} type="text" />
       </Form.Group>
     </Form>
   );

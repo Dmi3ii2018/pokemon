@@ -39,22 +39,6 @@
   }
 }
 
-.slider-container {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-  margin-top: 51px;
-  outline: none;
-  
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & div~div {
-    margin-left: 10px;
-  }
-}
-
 .active {
   cursor: grabbing;
   cursor: -webkit-grabbing;

@@ -5,6 +5,8 @@ interface CssExports {
   'ability': string;
   'bug': string;
   'card': string;
+  'container': string;
+  'description': string;
   'fire': string;
   'flying': string;
   'grass': string;

@@ -23,9 +23,9 @@ export interface IPokemons {
 }
 
 export interface IData {
-  count: number;
-  limit: string;
-  offset: number;
+  count?: number;
+  limit?: string;
+  offset?: number;
   pokemons: IPokemons[];
   total: number;
 }

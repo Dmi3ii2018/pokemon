@@ -1,36 +1,27 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import Layout from '../../components/Layout';
 import Heading, { TitleSize } from '../../components/Heading';
 import PokemonCard from '../../components/PokemonCard';
 import Input from '../../components/Form/Input';
-import { IPokemons, IData, IQuery, IOffset } from '../../interface/pokemons';
-import { getTypesAction } from '../../store/pokemon';
+import { IPokemons, IQuery, IOffset } from '../../interface/pokemons';
 
 import h from './Pokedex.module.scss';
-import useData from '../../hook/getData';
 import useDebounce from '../../hook/useDebounce';
 import Pagination from '../../components/Pagination';
-import { ConfigServerType, ConfigEndpoint } from "../../config"
+import useTemplateStore from "../../hook/useData";
 
-const LIMIT = 20;
+const LIMIT = 21;
 
 const PokedexPage: React.FC = () => {
-  const dispatch = useDispatch();
-  const dat = useSelector(state => state)
-
-  console.log("state: ", dat);
-
+  const { pokemons: { data, isLoading, error }, getPokemons } = useTemplateStore();
   const [searchValue, setSearchValue] = useState<string>('');
   const [searchQuery, setQuery] = useState<IQuery>({});
   const [offset, setOffset] = useState<IOffset>({
     limit: LIMIT
   });
   const debaunceValue = useDebounce(searchValue, 1000);
-
-  const { data, isLoading, error } = useData<IData>(ConfigServerType.pokemons, ConfigEndpoint.getPokemons, {...searchQuery, ...offset}, [searchValue, offset]);
 
   useEffect(() => {
     setOffset((state) => ({
@@ -44,8 +35,8 @@ const PokedexPage: React.FC = () => {
   }, [debaunceValue]);
 
   useEffect(() => {
-    dispatch(getTypesAction({...searchQuery, ...offset}))
-  }, [dispatch, searchQuery, offset])
+    getPokemons({...searchQuery, ...offset})
+  }, [searchQuery, offset, getPokemons])
 
   const onPageChange = useCallback((pageNumber: number) => {
     setOffset((state) => ({
@@ -59,14 +50,14 @@ const PokedexPage: React.FC = () => {
   }, []);
 
   if (error) {
-    return <div>Smth went wrong </div>;
+    return <div>Something went wrong </div>;
   }
 
   return (
     <div className={cn(h.root)}>
       <Layout>
         <div>
-          <Heading tag={TitleSize.xl}>Total number: {!isLoading && data && data.total}</Heading>
+          <Heading tag={TitleSize.xl}>{!isLoading && data && data.total} Pokemons for you to choose</Heading>
           <div>
             <Input searchValue={searchValue} queryHandler={handleSearchChange} />
           </div>
@@ -74,14 +65,8 @@ const PokedexPage: React.FC = () => {
             {!isLoading && data ? (
               data.pokemons.map((pokemon: IPokemons) => (
                 <PokemonCard
-                  id={pokemon.id}
                   key={pokemon.id}
-                  imgSrc={pokemon.img}
-                  name={pokemon.name}
-                  abilities={pokemon.abilities}
-                  type={pokemon.types}
-                  attack={pokemon.stats.attack}
-                  deffense={pokemon.stats.defense}
+                  pokemon={pokemon}
                 />
               ))
             ) : (

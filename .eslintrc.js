@@ -1,13 +1,13 @@
 module.exports = {
   env: {
     browser: true,
+    jest: true
   },
   extends: [
     "airbnb",
     "airbnb/hooks",
     "react-app",
-    "prettier",
-    "plugin:jsx-a11y/recommended",
+    "prettier"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {

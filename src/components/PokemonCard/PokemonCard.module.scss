@@ -15,78 +15,6 @@
     transform: scale(1.03);
     transition: all ease-in-out 0s;
   }
-
-  .dark {
-    background-color: darkcyan ;
-  }
-
-  .steel {
-    background-color: darkgray ;
-  }
-
-  .rock {
-    background-color:maroon ;
-  }
-
-  .psychic {
-    background-color:teal ;
-  }
-
-  .normal {
-    background-color:olivedrab ;
-  }
-
-  .ice {
-    background-color:lightskyblue ;
-  }
-
-  .ground {
-    background-color:peru ;
-  }
-
-  .ghost {
-    background-color:plum ;
-  }
-
-  .dragon {
-    background-color:red ;
-  }
-
-  .electric {
-    background-color:royalblue ;
-  }
-
-  .fairy {
-    background-color:salmon ;
-  }
-
-  .fighting {
-    background-color:mediumslateblue ;
-  }
-
-  .grass {
-    background-color: green;
-  }
-
-  .poison {
-    background-color: purple;
-  }
-
-  .fire {
-    background-color: orange;
-  }
-
-  .flying {
-    background-color: lightblue;
-  }
-
-  .water {
-    background-color: blue;
-  }
-
-  .bug {
-    background-color: chocolate;
-  }
 }
 
 @keyframes slidein {
@@ -214,4 +142,76 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.dark {
+  background-color: darkcyan ;
+}
+
+.steel {
+  background-color: darkgray ;
+}
+
+.rock {
+  background-color:maroon ;
+}
+
+.psychic {
+  background-color:teal ;
+}
+
+.normal {
+  background-color:olivedrab ;
+}
+
+.ice {
+  background-color:lightskyblue ;
+}
+
+.ground {
+  background-color:peru ;
+}
+
+.ghost {
+  background-color:plum ;
+}
+
+.dragon {
+  background-color:red ;
+}
+
+.electric {
+  background-color:royalblue ;
+}
+
+.fairy {
+  background-color:salmon ;
+}
+
+.fighting {
+  background-color:mediumslateblue ;
+}
+
+.grass {
+  background-color: green;
+}
+
+.poison {
+  background-color: purple;
+}
+
+.fire {
+  background-color: orange;
+}
+
+.flying {
+  background-color: lightblue;
+}
+
+.water {
+  background-color: blue;
+}
+
+.bug {
+  background-color: chocolate;
 }

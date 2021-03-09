@@ -1,13 +1,18 @@
 import { combineReducers } from 'redux';
-import pokemon from './pokemon';
+import { IStateRequest, IAbilityRequest } from '../interface';
+import pokemons from './pokemon';
+import abilities from "./ability";
 
 export interface IInitialState {
-
+  pokemons: IStateRequest;
+  abilities: IAbilityRequest
+  // relatedTypesPokemons: 
 }
 
 const createRootReducer = () =>
   combineReducers({
-    pokemon,
+    pokemons,
+    abilities
   });
 
 export default createRootReducer;

@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
 import App from './App';
-import configureStore from "./configStore";
+import configureStore from './configStore';
 
-const store = configureStore({})
+const store = configureStore({});
 
-ReactDOM.render((
-    <Provider store={store}>
-       <App/>
-    </Provider>), document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </Provider>,
+  document.getElementById('root'),
+);
